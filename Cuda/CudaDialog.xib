@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CudaDialog" customModule="Cuda" customModuleProvider="target">
+            <connections>
+                <outlet property="btnLeft" destination="ECT-Fe-EwB" id="Emo-iL-rAP"/>
+                <outlet property="btnRight" destination="T4j-YE-FCf" id="BYg-ag-bO9"/>
+                <outlet property="dialog" destination="gBf-m0-NtY" id="6nO-Sh-Owy"/>
+                <outlet property="lblMessage" destination="Ug9-dT-BXQ" id="02t-K1-BDh"/>
+                <outlet property="lblTitle" destination="GMU-It-uhQ" id="eB9-GY-LyW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="Background">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyC-SE-JIN">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="IyC-SE-JIN" secondAttribute="bottom" id="MsF-j6-Nxq"/>
+                <constraint firstItem="IyC-SE-JIN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S96-tu-PYf"/>
+                <constraint firstItem="IyC-SE-JIN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UOk-oF-Avn"/>
+                <constraint firstAttribute="trailing" secondItem="IyC-SE-JIN" secondAttribute="trailing" id="qNC-d2-gM3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="gBf-m0-NtY" userLabel="Dialog">
+            <rect key="frame" x="0.0" y="0.0" width="275" height="190"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMU-It-uhQ">
+                    <rect key="frame" x="0.0" y="0.0" width="275" height="44"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECT-Fe-EwB" customClass="CudaRoundButton" customModule="Cuda" customModuleProvider="target">
+                    <rect key="frame" x="18" y="134" width="110" height="36"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.36862745099999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnLeftClicked:" destination="-1" eventType="touchUpInside" id="7rJ-ux-vP7"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ug9-dT-BXQ">
+                    <rect key="frame" x="18" y="52" width="239" height="74"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4j-YE-FCf" customClass="CudaRoundButton" customModule="Cuda" customModuleProvider="target">
+                    <rect key="frame" x="147" y="134" width="110" height="36"/>
+                    <color key="backgroundColor" red="0.20784313730000001" green="0.56078431370000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnRightClicked:" destination="-1" eventType="touchUpInside" id="LrM-9O-KET"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="983.5" y="546"/>
+        </view>
+    </objects>
+</document>

@@ -15,6 +15,7 @@ class ViewController: UIViewController
     let fetchControl = CudaFetchControl(key: "CudaFC", timespan: 3)
     
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var txtView: UITextView!
     
     override func viewDidLoad()
     {
@@ -42,12 +43,16 @@ class ViewController: UIViewController
         cudaDialog!.rightBtnTitle = "Yes"
         cudaDialog!.leftBtnClicked = noClicked
         cudaDialog!.rightBtnClicked = yesClicked
+        cudaDialog!.inputText = "http://posttestserver.com"
         cudaDialog!.showDialog(self)
     }
     
     func yesClicked()
     {
         cudaDialog!.hideDialog()
+        
+        let myRequest = MyRequest(url: cudaDialog!.txtInput.text, txtView: txtView)
+        myRequest.sendAndReceive()
     }
     
     func noClicked()

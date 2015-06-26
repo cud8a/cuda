@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Cuda
+
+  Created by Tamas Bara on 26.06.15.
+  Copyright (c) 2015 SnoozeSoft. All rights reserved.
+*/
+
+Warning = "Warning";
+NoNetwork = "Please check your internet connection";

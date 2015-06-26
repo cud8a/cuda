@@ -12,6 +12,8 @@ import SystemConfiguration
 
 class Cuda
 {
+    static let KEY_LAST_WARNING_NO_NETWORK = "noNetwork"
+    
     class var isLowHeight: Bool
     {
         return UIScreen.mainScreen().bounds.height < 568

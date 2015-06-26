@@ -15,11 +15,13 @@ class CudaDialog: UIViewController
     @IBOutlet weak var lblMessage: UILabel!
     @IBOutlet weak var btnRight: CudaRoundButton!
     @IBOutlet var dialog: UIView!
+    @IBOutlet weak var txtInput: UITextField!
     
     var dialogTitle: String?
     var dialogMessage: String?
     var leftBtnTitle: String?
     var rightBtnTitle: String?
+    var inputText: String?
     
     var leftBtnClicked: (() -> ())?
     var rightBtnClicked: (() -> ())?
@@ -49,6 +51,11 @@ class CudaDialog: UIViewController
         dialog.layer.cornerRadius = 6
         dialog.layer.masksToBounds = true
         dialog.alpha = 0
+        
+        if inputText != nil
+        {
+            txtInput.text = inputText
+        }
         
         if dialogTitle != nil
         {

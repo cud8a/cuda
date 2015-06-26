@@ -11,6 +11,7 @@
                 <outlet property="dialog" destination="gBf-m0-NtY" id="6nO-Sh-Owy"/>
                 <outlet property="lblMessage" destination="Ug9-dT-BXQ" id="02t-K1-BDh"/>
                 <outlet property="lblTitle" destination="GMU-It-uhQ" id="eB9-GY-LyW"/>
+                <outlet property="txtInput" destination="Egx-gL-Geh" id="eq0-kM-jPa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,6 +47,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECT-Fe-EwB" customClass="CudaRoundButton" customModule="Cuda" customModuleProvider="target">
                     <rect key="frame" x="18" y="134" width="110" height="36"/>
                     <color key="backgroundColor" red="0.90196078430000004" green="0.36862745099999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,7 +57,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ug9-dT-BXQ">
-                    <rect key="frame" x="18" y="52" width="239" height="74"/>
+                    <rect key="frame" x="18" y="52" width="239" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -63,6 +65,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4j-YE-FCf" customClass="CudaRoundButton" customModule="Cuda" customModuleProvider="target">
                     <rect key="frame" x="147" y="134" width="110" height="36"/>
                     <color key="backgroundColor" red="0.20784313730000001" green="0.56078431370000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,6 +74,11 @@
                         <action selector="btnRightClicked:" destination="-1" eventType="touchUpInside" id="LrM-9O-KET"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Egx-gL-Geh">
+                    <rect key="frame" x="18" y="88" width="239" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

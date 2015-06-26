@@ -31,6 +31,10 @@
 		0254BAB91B3C384700FB6CBF /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BAB41B3C384700FB6CBF /* FMResultSet.m */; };
 		0254BABD1B3C3A5300FB6CBF /* CudaUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BABC1B3C3A5300FB6CBF /* CudaUtilities.m */; };
 		0254BABF1B3C3A9400FB6CBF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0254BABE1B3C3A9400FB6CBF /* libsqlite3.0.dylib */; };
+		02E323201B3D451200BDF603 /* CudaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E3231F1B3D451200BDF603 /* CudaRequest.swift */; };
+		02E323231B3D47C500BDF603 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02E323251B3D47C500BDF603 /* Localizable.strings */; };
+		02E323281B3D483300BDF603 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E323271B3D483300BDF603 /* SwiftyJSON.swift */; };
+		02E3232A1B3D4C2D00BDF603 /* MyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E323291B3D4C2D00BDF603 /* MyRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,11 @@
 		0254BABB1B3C3A5300FB6CBF /* CudaUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CudaUtilities.h; sourceTree = "<group>"; };
 		0254BABC1B3C3A5300FB6CBF /* CudaUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CudaUtilities.m; sourceTree = "<group>"; };
 		0254BABE1B3C3A9400FB6CBF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		02E3231F1B3D451200BDF603 /* CudaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CudaRequest.swift; sourceTree = "<group>"; };
+		02E323241B3D47C500BDF603 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		02E323261B3D47CA00BDF603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		02E323271B3D483300BDF603 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		02E323291B3D4C2D00BDF603 /* MyRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +113,7 @@
 		0254BA641B3C356C00FB6CBF = {
 			isa = PBXGroup;
 			children = (
+				02E323251B3D47C500BDF603 /* Localizable.strings */,
 				0254BABE1B3C3A9400FB6CBF /* libsqlite3.0.dylib */,
 				0254BAA91B3C380A00FB6CBF /* FMDB */,
 				0254BA6F1B3C356C00FB6CBF /* Cuda */,
@@ -124,11 +134,13 @@
 		0254BA6F1B3C356C00FB6CBF /* Cuda */ = {
 			isa = PBXGroup;
 			children = (
+				02E323271B3D483300BDF603 /* SwiftyJSON.swift */,
 				0254BABA1B3C389800FB6CBF /* ObjCBridge.h */,
 				0254BABB1B3C3A5300FB6CBF /* CudaUtilities.h */,
 				0254BABC1B3C3A5300FB6CBF /* CudaUtilities.m */,
 				0254BA941B3C372500FB6CBF /* Cuda.swift */,
 				0254BA951B3C372500FB6CBF /* CudaDatabase.swift */,
+				02E3231F1B3D451200BDF603 /* CudaRequest.swift */,
 				0254BA961B3C372500FB6CBF /* CudaDialog.swift */,
 				0254BA971B3C372500FB6CBF /* CudaFetchControl.swift */,
 				0254BA981B3C372500FB6CBF /* CudaIconCache.swift */,
@@ -144,6 +156,7 @@
 				0254BA791B3C356C00FB6CBF /* Images.xcassets */,
 				0254BA7B1B3C356C00FB6CBF /* LaunchScreen.xib */,
 				0254BA701B3C356C00FB6CBF /* Supporting Files */,
+				02E323291B3D4C2D00BDF603 /* MyRequest.swift */,
 			);
 			path = Cuda;
 			sourceTree = "<group>";
@@ -272,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0254BAA71B3C372500FB6CBF /* CudaDialog.xib in Resources */,
+				02E323231B3D47C500BDF603 /* Localizable.strings in Resources */,
 				0254BA931B3C36CA00FB6CBF /* cuda.sqlite in Resources */,
 				0254BA781B3C356C00FB6CBF /* Main.storyboard in Resources */,
 				0254BA7D1B3C356C00FB6CBF /* LaunchScreen.xib in Resources */,
@@ -300,13 +314,16 @@
 				0254BA9E1B3C372500FB6CBF /* Cuda.swift in Sources */,
 				0254BABD1B3C3A5300FB6CBF /* CudaUtilities.m in Sources */,
 				0254BAB81B3C384700FB6CBF /* FMDatabaseQueue.m in Sources */,
+				02E323281B3D483300BDF603 /* SwiftyJSON.swift in Sources */,
 				0254BAB91B3C384700FB6CBF /* FMResultSet.m in Sources */,
 				0254BAA51B3C372500FB6CBF /* CudaPostsQueue.swift in Sources */,
 				0254BA731B3C356C00FB6CBF /* AppDelegate.swift in Sources */,
 				0254BA9F1B3C372500FB6CBF /* CudaDatabase.swift in Sources */,
 				0254BAB61B3C384700FB6CBF /* FMDatabaseAdditions.m in Sources */,
+				02E3232A1B3D4C2D00BDF603 /* MyRequest.swift in Sources */,
 				0254BAA41B3C372500FB6CBF /* CudaPendingTable.swift in Sources */,
 				0254BAA11B3C372500FB6CBF /* CudaFetchControl.swift in Sources */,
+				02E323201B3D451200BDF603 /* CudaRequest.swift in Sources */,
 				0254BAB71B3C384700FB6CBF /* FMDatabasePool.m in Sources */,
 				0254BAA61B3C372500FB6CBF /* CudaRoundButton.swift in Sources */,
 				0254BAA21B3C372500FB6CBF /* CudaIconCache.swift in Sources */,
@@ -346,6 +363,15 @@
 				0254BA7C1B3C356C00FB6CBF /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		02E323251B3D47C500BDF603 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				02E323241B3D47C500BDF603 /* en */,
+				02E323261B3D47CA00BDF603 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -509,6 +535,7 @@
 				0254BA8E1B3C356C00FB6CBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0254BA8F1B3C356C00FB6CBF /* Build configuration list for PBXNativeTarget "CudaTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +544,7 @@
 				0254BA911B3C356C00FB6CBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

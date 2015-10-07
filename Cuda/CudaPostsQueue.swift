@@ -44,7 +44,7 @@ class CudaPostsQueue
     {
         if !Cuda.isConnectedToNetwork
         {
-            println("can´t post: no network connection")
+            print("can´t post: no network connection")
             
             return
         }
@@ -56,7 +56,7 @@ class CudaPostsQueue
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async(dispatch_get_global_queue(priority, 0))
             {
-                println("----------- PostsQueue started")
+                print("----------- PostsQueue started")
                 self.postInBackground()
             }
         }
@@ -66,14 +66,14 @@ class CudaPostsQueue
     {
         if let pending = CudaPendingTable().nextForLookup(lastId: lastId)
         {
-            println("pending method: \(pending.method), id: \(pending.id!), url: \(pending.url), data: \(pending.data)")
+            print("pending method: \(pending.method), id: \(pending.id!), url: \(pending.url), data: \(pending.data)")
             
             send(pending)
         }
         else
         {
             busy = false
-            println("----------- PostsQueue finished")
+            print("----------- PostsQueue finished")
         }
     }
     
@@ -96,25 +96,25 @@ class CudaPostsQueue
                 
                 if error != nil
                 {
-                    println("pending: \(pending.id!) error=\(error)")
-                    self.postError(pending, error: error)
+                    print("pending: \(pending.id!) error=\(error)")
+                    self.postError(pending, error: error!)
                     return
                 }
                 
-                if let httpRespone = response as? NSHTTPURLResponse
+                if let httpRespone = response as? NSHTTPURLResponse, dataChecked = data
                 {
                     if httpRespone.statusCode == 200
                     {
-                        println("pending: \(pending.id!) response:\n\(response)\n")
+                        print("pending: \(pending.id!) response:\n\(response)\n")
                         
-                        let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                        println("pending: \(pending.id!) responseString:\n\(responseString)\n")
+                        let responseString = NSString(data: dataChecked, encoding: NSUTF8StringEncoding)
+                        print("pending: \(pending.id!) responseString:\n\(responseString)\n")
                         
-                        self.postSuccess(pending, data: data)
+                        self.postSuccess(pending, data: dataChecked)
                     }
                     else
                     {
-                        println("pending: \(pending.id!) error=\(httpRespone.statusCode)")
+                        print("pending: \(pending.id!) error=\(httpRespone.statusCode)")
                         self.postError(pending, error: NSError(domain: "HTTP", code: httpRespone.statusCode, userInfo: nil))
                     }
                 }
@@ -123,7 +123,7 @@ class CudaPostsQueue
         }
         else
         {
-            println("corrupt url: \(pending.url)")
+            print("corrupt url: \(pending.url)")
         }
     }
     
@@ -134,17 +134,17 @@ class CudaPostsQueue
         pending.dateLastTry = NSDate()
         CudaPendingTable().update(pending)
         
-        println("pending updated, id: \(pending.id!)")
+        print("pending updated, id: \(pending.id!)")
         
-        postInBackground(lastId: pending.id!)
+        postInBackground(pending.id!)
     }
     
     private func postSuccess(pending: CudaPendingRow, data: NSData)
     {
         CudaPendingTable().delete(pending)
         
-        println("pending deleted, id: \(pending.id!)")
+        print("pending deleted, id: \(pending.id!)")
         
-        postInBackground(lastId: pending.id!)
+        postInBackground(pending.id!)
     }
 }

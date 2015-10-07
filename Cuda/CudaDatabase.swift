@@ -8,14 +8,19 @@
 
 import Foundation
 
-enum CudaDatabaseResult
+enum CudaDatabaseResult: String, CustomStringConvertible
 {
-    case DoneNothing
-    case Updated
-    case Inserted
-    case Deleted
-    case Error
-    case ErrorAlreadyExists
+    case DoneNothing = "DoneNothing"
+    case Updated = "Updated"
+    case Inserted = "Inserted"
+    case Deleted = "Deleted"
+    case Error = "Error"
+    case ErrorAlreadyExists = "ErrorAlreadyExists"
+    
+    var description: String
+    {
+        return "\(self.rawValue)"
+    }
 }
 
 class CudaDatabase
@@ -35,7 +40,7 @@ class CudaDatabase
         
         if !database.open()
         {
-            println("Unable to open database")
+            print("Unable to open database")
             return nil
         }
         
@@ -59,46 +64,44 @@ class CudaDatabase
     
     private func prepare()
     {
-        var pathOk = true
         let fileManager = NSFileManager.defaultManager()
-        let destinationPath = filePath(dbName)
+        path = filePath(dbName)
         
-        if destinationPath != nil
+        if !fileManager.fileExistsAtPath(path!)
         {
-            if !fileManager.fileExistsAtPath(destinationPath!)
+            let dbNameFull = "\(self.dbName).sqlite"
+            let countDbName = dbNameFull.characters.count
+            do
             {
-                var error:NSError?
-                if !fileManager.createDirectoryAtPath(destinationPath!.stringByDeletingLastPathComponent, withIntermediateDirectories: true, attributes: nil, error: &error)
+                let directory = path![0...(path!.characters.count - (countDbName + 1))]
+                try fileManager.createDirectoryAtPath(directory, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch
+            {
+                print("createDirectoryAtPath error")
+            }
+            
+            let dbName = dbNameFull[0...(countDbName - 8)]
+            if let sourcePath = NSBundle.mainBundle().pathForResource(dbName, ofType: "sqlite")
+            {
+                do
                 {
-                    println("createDirectoryAtPath error: \(error)")
+                    try fileManager.copyItemAtPath(sourcePath, toPath: path!)
                 }
-                
-                let sourcePath = NSBundle.mainBundle().pathForResource(dbName, ofType: "sqlite")
-                if !fileManager.copyItemAtPath(sourcePath!, toPath: destinationPath!, error: &error)
+                catch
                 {
-                    println("copyItemAtPath error: \(error)")
+                    print("copyItemAtPath error")
                 }
             }
-        }
-        else
-        {
-            pathOk = false
-        }
-        
-        if pathOk
-        {
-            path = destinationPath
         }
     }
     
     private func filePath(dbName: String) -> String?
     {
-        if let applicationSupport = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as? String
-        {
-            let applicationFolder = applicationSupport.stringByAppendingPathComponent(NSBundle.mainBundle().bundleIdentifier!)
-            return applicationFolder.stringByAppendingPathComponent("\(dbName).sqlite")
-        }
+        let applicationSupport = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
         
-        return nil
+        let applicationFolder = "\(applicationSupport)/\(NSBundle.mainBundle().bundleIdentifier!)"
+        
+        return "\(applicationFolder)/\(dbName).sqlite"
     }
 }

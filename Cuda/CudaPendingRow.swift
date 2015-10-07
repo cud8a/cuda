@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CudaPendingStatus: Int, Printable
+enum CudaPendingStatus: Int, CustomStringConvertible
 {
     case New = 0
     case Error = 1

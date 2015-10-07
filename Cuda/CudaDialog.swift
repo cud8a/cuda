@@ -31,7 +31,7 @@ class CudaDialog: UIViewController
         super.init(nibName: "CudaDialog", bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }
@@ -45,9 +45,9 @@ class CudaDialog: UIViewController
         view.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
         view.alpha = 0
         
-        var x = (bounds.width - dialog.frame.width) / 2
-        var y = (bounds.height - dialog.frame.height) / 2
-        dialog.frame.offset(dx: x, dy: y)
+        let x = (bounds.width - dialog.frame.width) / 2
+        let y = (bounds.height - dialog.frame.height) / 2
+        dialog.frame.offsetInPlace(dx: x, dy: y)
         dialog.layer.cornerRadius = 6
         dialog.layer.masksToBounds = true
         dialog.alpha = 0

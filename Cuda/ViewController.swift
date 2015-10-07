@@ -51,8 +51,11 @@ class ViewController: UIViewController
     {
         cudaDialog!.hideDialog()
         
-        let myRequest = MyRequest(url: cudaDialog!.txtInput.text, txtView: txtView)
-        myRequest.sendAndReceive()
+        if let text = cudaDialog!.txtInput.text
+        {
+            let myRequest = MyRequest(url: text, txtView: txtView)
+            myRequest.sendAndReceive()
+        }
     }
     
     func noClicked()

@@ -38,7 +38,7 @@ class CudaPendingTable: CudaDatabase
             
             if !database.executeUpdate("insert into \(tableName) (\(columns)) values (\(values))", withArgumentsInArray: [])
             {
-                println("PendingTable: insert failed: \(database.lastErrorMessage())")
+                print("PendingTable: insert failed: \(database.lastErrorMessage())")
             }
             else
             {
@@ -52,7 +52,7 @@ class CudaPendingTable: CudaDatabase
         return result
     }
     
-    func nextForLookup(#lastId: Int) -> CudaPendingRow?
+    func nextForLookup(lastId lastId: Int) -> CudaPendingRow?
     {
         if let database = getDatabase()
         {
@@ -67,7 +67,7 @@ class CudaPendingTable: CudaDatabase
             }
             else
             {
-                println("PendingTable: select failed: \(database.lastErrorMessage())")
+                print("PendingTable: select failed: \(database.lastErrorMessage())")
             }
             
             database.close()
@@ -98,7 +98,7 @@ class CudaPendingTable: CudaDatabase
             
             if !database.executeUpdate("update \(tableName) set \(values) where id=\(id)", withArgumentsInArray: [])
             {
-                println("PendingTable: update failed: \(database.lastErrorMessage())")
+                print("PendingTable: update failed: \(database.lastErrorMessage())")
             }
             else
             {
@@ -119,7 +119,7 @@ class CudaPendingTable: CudaDatabase
         {
             if !database.executeUpdate("delete from \(tableName) where id=\(id)", withArgumentsInArray: [])
             {
-                println("PendingTable: delete failed: \(database.lastErrorMessage())")
+                print("PendingTable: delete failed: \(database.lastErrorMessage())")
             }
             else
             {

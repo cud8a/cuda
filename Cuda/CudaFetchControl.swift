@@ -31,14 +31,14 @@ class CudaFetchControl
         if let strDateLastFetch = defaults.objectForKey(key) as? String
         {
             let dateLastFetch = dateFormatter.dateFromString(strDateLastFetch)
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitMinute, fromDate: dateLastFetch!, toDate: NSDate(), options: nil)
+            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: dateLastFetch!, toDate: NSDate(), options: [])
             if components.minute > timespan
             {
                 fetch = true
             }
             else
             {
-                println("timespan too short for another fetch, key: \(key)")
+                print("timespan too short for another fetch, key: \(key)")
             }
         }
         else
@@ -60,7 +60,7 @@ class CudaFetchControl
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey(key)
         
-        println("fetch control cleared for key: \(key)")
+        print("fetch control cleared for key: \(key)")
     }
     
     func isFirstFetch() -> Bool

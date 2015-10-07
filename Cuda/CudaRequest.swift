@@ -28,13 +28,13 @@ class CudaRequest
     {
         if logEnabled
         {
-            println(msg)
+            print(msg)
         }
     }
     
     func logError(msg: String)
     {
-        println(msg)
+        print(msg)
     }
     
     func sendAndReceive() -> Bool
@@ -43,8 +43,6 @@ class CudaRequest
         
         if checkNetwork()
         {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            
             if let requestUrl = NSURL(string: url)
             {
                 let request = NSMutableURLRequest(URL: requestUrl)
@@ -59,7 +57,7 @@ class CudaRequest
                     
                     if error != nil
                     {
-                        self.requestError(error)
+                        self.requestError(error!)
                         return
                     }
                     
@@ -67,7 +65,7 @@ class CudaRequest
                     {
                         if httpRespone.statusCode == 200
                         {
-                            self.requestOk(response, data: data)
+                            self.requestOk(response!, data: data!)
                         }
                         else
                         {
@@ -127,14 +125,14 @@ class CudaRequest
             return true
         }
         
-        println("No network error")
+        print("No network error")
         
         var showWarning = false
         let defaults = NSUserDefaults.standardUserDefaults()
         if let strDateLastWarning = defaults.objectForKey(Cuda.KEY_LAST_WARNING_NO_NETWORK) as? String
         {
             let dateLastWarning = dateFormatter.dateFromString(strDateLastWarning)
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitMinute, fromDate: dateLastWarning!, toDate: NSDate(), options: nil)
+            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: dateLastWarning!, toDate: NSDate(), options: [])
             showWarning = components.minute > 0
         }
         else
@@ -162,7 +160,7 @@ class CudaRequest
         if let strDate = json["updated_at"].string
         {
             // 2015-04-07T21:59:54.281Z
-            var dateFormatter = NSDateFormatter()
+            let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             dateUpdated = dateFormatter.dateFromString(strDate)?.dateByAddingTimeInterval(2 * 60 * 60)
         }
